@@ -1,11 +1,14 @@
 import sys
+import os
 from core import ImageWrapper
+from driverHandler import webdriver_executable
 	
 if __name__ == "__main__":
 	params = {
-		"keyword": sys.argv[0],
-		"URLNumber": int(sys.argv[1])
+		"keyword": sys.argv[1],
+		"URLNumber": int(sys.argv[2])
 	}
-
-	printer = lambda urls: for url in urls: print(url)
-	printer(ImageWrapper.URLFind(params))
+	
+	app_path = os.path.dirname(os.path.realpath(__file__))
+	for url in ImageWrapper().URLFind(params):
+		print(url)
